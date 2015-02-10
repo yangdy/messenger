@@ -6,7 +6,9 @@
 -define(SERVER, ?MODULE).
 
 start_link(Port) ->
-    supervisor:start_link({local, ?SERVER}, ?MODULE, Port).
+    {ok, Pid} = supervisor:start_link({local, ?SERVER}, ?MODULE, Port),
+    cluster:start(gateway, ?SERVER),
+    {ok, Pid}.
 
 init(Port) ->
     RestartStrategy = {one_for_one, 10, 10},
