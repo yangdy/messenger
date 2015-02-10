@@ -1,4 +1,6 @@
-{["src/*",
+{[
+  "lib/eredis/*",
+  "src/*",
   "src/gateway/*",
   "src/gateway/states/*"],
  [debug_info,
